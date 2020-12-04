@@ -9,17 +9,28 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+            background-image: url(./snake.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        canvas {
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 
 <body>
     <canvas id="canvas" width="600" height="600"></canvas>
+    <script src="./main.js"></script>
 </body>
-<script src="./main.js"></script>
 
 </html>

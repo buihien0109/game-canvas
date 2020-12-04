@@ -56,52 +56,9 @@ class FreeHand {
     }
 
     drawPoints() {
-        let ctx = this.context;
-
-        if(this.points.length <= 1) {
-            return
-        }
-
-        if(this.points.length == 2) {
-            ctx.beginPath();
-            ctx.moveTo(this.points[0].x, this.points[0].y);
-            ctx.lineTo(this.points[1].x, this.points[1].y);
-            ctx.stroke();
-            return
-        }
-
-        ctx.beginPath();
-        ctx.moveTo(this.points[0].x, this.points[0].y);
-
-        for (var i = 1; i < this.points.length - 2; i++) {
-            var c = (this.points[i].x + this.points[i + 1].x) / 2;
-            var d = (this.points[i].y + this.points[i + 1].y) / 2;
-            ctx.quadraticCurveTo(this.points[i].x, this.points[i].y, c, d);
-        }
-
-        ctx.quadraticCurveTo(
-            this.points[i].x,
-            this.points[i].y,
-            this.points[i + 1].x,
-            this.points[i + 1].y
-        );
-        ctx.stroke();
+        
     }
 }
-
-let freehand = new FreeHand(canvas);
-
-canvas.addEventListener('mousedown', (e) => {
-    freehand.onmousedown(e)
-})
-
-canvas.addEventListener('mousemove', (e) => {
-    freehand.onmousemove(e)
-})
-
-canvas.addEventListener('mouseup', () => {
-    freehand.onmouseup()
-})
 
 
 

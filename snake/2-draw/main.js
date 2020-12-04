@@ -81,55 +81,11 @@ class Snake {
         this.segments.forEach(segment => segment.drawSquare(this.color));
         this.segments[0].drawSquare('green');
     }
-
-    move() {
-        let head = this.segments[0];
-        let newHead;
-
-        if(this.direction == 'right') {
-            newHead = new Block(head.col + 1, head.row);
-        } else if(this.direction == 'down') {
-            newHead = new Block(head.col, head.row + 1);
-        } else if(this.direction == 'left') {
-            newHead = new Block(head.col - 1, head.row);
-        } else if(this.direction == 'up') {
-            newHead = new Block(head.col, head.row - 1);
-        }
-
-        this.segments.unshift(newHead);
-        this.segments.pop();
-    }
-
-    setDirection(newDirection) {
-        if(
-            this.direction == "up" && newDirection == "down" ||
-            this.direction == "left" && newDirection == "right" ||
-            this.direction == "down" && newDirection == "up" ||
-            this.direction == "right" && newDirection == "left"
-        ) return
-        
-        this.direction = newDirection;
-    }
 }
-
-let directions = {
-    37: "left",
-    38: "up",
-    39: "right",
-    40: "down"
-}
-
-document.addEventListener('keydown', function(e) {
-    let newDirection = directions[e.keyCode];
-    if(newDirection) {
-        snake.setDirection(newDirection);
-    }
-})
 
 let score;
 let snake;
 let food;
-let interval;
 
 //Start Game function
 function init() {
@@ -138,17 +94,13 @@ function init() {
     // let block = new Block(4, 5);
     // block.drawCircle('red');
     snake = new Snake('yellow');
+    snake.draw();
+
     food = new Food('red');
+    food.draw();
 
-    interval = setInterval(function() {
-        ctx.clearRect(0, 0, width, height);
-        drawScore();
-        drawBorder();
-
-        snake.draw();
-        snake.move();
-        food.draw();
-    },100)
+    drawScore();
+    drawBorder();
 }
 
 window.onload = init;

@@ -1,12 +1,5 @@
 let canvas = document.getElementById("canvas");
 
-let btnReset = document.querySelector('.btn-reset');
-
-btnReset.addEventListener('click', function() {
-    freehand.clearCanvas();
-})
-
-
 class FreeHand {
     constructor(canvas) {
         this.canvas = canvas;
@@ -85,7 +78,6 @@ class FreeHand {
         }
 
         // Các trường hợp còn lại
-
         ctx.beginPath();
         // Bắt đầu vẽ từ điểm đầu tiên
         ctx.moveTo(this.points[0].x, this.points[0].y);
@@ -104,11 +96,6 @@ class FreeHand {
             this.points[i + 1].y
         );
         ctx.stroke();
-    }
-
-    clearCanvas() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.memCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 
